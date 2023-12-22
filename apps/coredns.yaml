@@ -19,7 +19,7 @@ spec:
       env:
         - name: HELM_VALUES
           value: |-
-            podAnnotations:
+            customLabels:
               testing: "1234"
         - name: KUSTOMIZATION
           value: |-
