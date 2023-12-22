@@ -17,30 +17,30 @@ spec:
     plugin:
       name: kustomize-build-with-helm
       env:
-        name: HELM_VALUES
-        value: |-
-          podAnnotations:
-            testing: "1234"
-        name: KUSTOMIZATION
-        value: |-
-          apiVersion: kustomize.config.k8s.io/v1beta1
-          kind: Kustomization
-          resources:
-            - all.yaml
-          patchesJson6902:
-            - target:
-                group: apps
-                version: v1
-                kind: Deployment # Adjust the kind if necessary
-                name: coredns-app-coredns
-              patch: |-
-                - op: remove
-                  path: /spec/selector/matchLabels/app.kubernetes.io~1instance
-                - op: remove
-                  path: /spec/selector/matchLabels/app.kubernetes.io~1name
-                - op: add
-                  path: /spec/selector/matchLabels/testing
-                  value: "1234"
+        - name: HELM_VALUES
+          value: |-
+            podAnnotations:
+              testing: "1234"
+        - name: KUSTOMIZATION
+          value: |-
+            apiVersion: kustomize.config.k8s.io/v1beta1
+            kind: Kustomization
+            resources:
+              - all.yaml
+            patchesJson6902:
+              - target:
+                  group: apps
+                  version: v1
+                  kind: Deployment # Adjust the kind if necessary
+                  name: coredns-app-coredns
+                patch: |-
+                  - op: remove
+                    path: /spec/selector/matchLabels/app.kubernetes.io~1instance
+                  - op: remove
+                    path: /spec/selector/matchLabels/app.kubernetes.io~1name
+                  - op: add
+                    path: /spec/selector/matchLabels/testing
+                    value: "1234"
 
   syncPolicy:
     automated:
