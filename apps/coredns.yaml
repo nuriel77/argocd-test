@@ -13,7 +13,7 @@ spec:
     targetRevision: master
     path: charts/coredns
     helm:
-      valueObject:
+      valuesObject:
         podAnnotations:
           testing: "1234"
   syncPolicy:
