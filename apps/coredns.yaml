@@ -10,7 +10,7 @@ spec:
   project: default # Change to the name of your ArgoCD project
   source:
     repoURL: 'https://coredns.github.io/helm'
-    targetRevision: HEAD
+    targetRevision: 1.28.2
     chart: coredns/coredns
     helm:
       valueObject:
