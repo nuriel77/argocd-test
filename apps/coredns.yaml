@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: coredns-app
+  namespace: argocd
+spec:
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: kube-system
+  project: default # Change to the name of your ArgoCD project
+  source:
+    repoURL: 'https://coredns.github.io/helm'
+    targetRevision: HEAD
+    chart: coredns/coredns
+    helm:
+      valueObject:
+        podAnnotations:
+          testing: "1234"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
