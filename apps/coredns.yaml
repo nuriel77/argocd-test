@@ -9,9 +9,9 @@ spec:
     namespace: kube-system
   project: default # Change to the name of your ArgoCD project
   source:
-    repoURL: 'https://coredns.github.io/helm'
-    targetRevision: 1.28.2
-    chart: coredns/coredns
+    repoURL: 'https://github.com/coredns/helm.git'
+    targetRevision: master
+    path: charts/coredns
     helm:
       valueObject:
         podAnnotations:
